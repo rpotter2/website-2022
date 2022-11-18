@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/rachelpo/public_html/
+    - export DEPLOYPATH=/home/rachelpo/index/
     - /bin/cp -R * $DEPLOYPATH
