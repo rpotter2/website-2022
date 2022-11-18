@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="oo" style="width: 70rem;line-height: 2;margin: 30px auto;">
+        <h2>About Me</h2>
+        <p>I'm Rachel Potter, I've lived in the Richmond area for most
+            of my life, but now I'm a senior at University of Mary Washington majoring in Communication and Digital
+            Studies, with a minor in Computer Science.</p>
+        <p style="">I've always been a creative person with a lot of ideas floating around in my head and love learning
+            and exploring different ways to express my passions. It was during quarantine where I discovered a love for
+            programming and how it allows one to turn intangible ideas into reality. I've most enjoyed creating websites
+            and being able to curate user experiences from all angles. </p>
+
+        <p>In class I've learned desktop software and backend development while my frontend skills have been all
+            self-taught. I've worked mainly in Javascript, Python, and Java but can quickly learn any language or
+            program.</p>
+        <p>In class I've learned desktop software and backend development while my frontend skills have been all
+            self-taught. I've worked mainly in Javascript, Python, and Java but can quickly learn any language or
+            program. After graduation my goal is to become a fullstack developer capable of working in all areas of
+            development. Feel free to contact me for any opportunities for us to grow together!</p>
+    </div>
+{% endblock %}
+{% block script %}
+    let slideIndex = 1;
+    showSlide(slideIndex);
+
+    function nextSlide(n) {
+    showSlide(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+    showSlide(slideIndex = n);
+    }
+
+    function showSlide(n) {
+    let i;
+    let slides = document.getElementsByClassName("slides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {
+    slideIndex = 1
+    }
+    if (n < 1) {
+    slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    }
+{% endblock %}

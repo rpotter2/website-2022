@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="card2 sticky" style="z-index: 1;">
+        <div class="oo">
+            <h1>Hey, I'm <span style=" color: var(--text1);">Rachel</span>.</h1>
+            <h2>digital dabbler, avid learner, and builder of things</h2>
+        </div>
+    </section>
+    <section class="card1 sticky" style="z-index: 2;">
+
+
+        <div class="oo"><h2>Check out some of my <a class="link" href="{{ url_for('projects') }}">projects</a>:
+        </h2>
+            <div class="gallery">
+                <div class="grid">
+                    <div class="grid-item">
+                        <div class="item-img">
+                            <img src="../static/images/silhouette-example.png" alt="a cartoonish humanoid figure made of shapes">
+                        </div>
+                        <a class="item-shade" href="https://silhouette.rachelpotter.net">
+                            Character Silhouette Generator
+                        </a>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="item-img">
+                            <img src="../static/images/poem-example.png" alt="a randomly generated poem">
+                        </div>
+                        <a class="item-shade" href="https://ibm-poems.rachelpotter.net">
+                            IBM Poem Template
+                        </a>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="item-img">
+                            <img src="../static/images/wordle-example.png" alt="">
+                        </div>
+                        <a class="item-shade" href="https://github.com/harmonyrose/CPSC-240-Final-Project" target="_blank">
+                            Infinite Wordle<span class="cp cp-exit-top-right"></span>
+                        </a>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="item-img">
+                            <img src="../static/images/text-example.png" alt="lettering examples of a messy handwritten font">
+                        </div>
+                        <a class="item-shade" href="Rachable-Readable.otf">
+                            Rachable Font<span class="cp cp-download"></span>
+                        </a>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="item-img wip">
+                            <img src="../static/images/shadow-preview.png" alt="A work in progress">
+                        </div>
+                        <a class="item-shade wip">
+                            Coming Soon
+                        </a>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="item-img wip">
+                            <img src="../static/images/detractor-preview.png" alt="A work in progress">
+                        </div>
+                        <a class="item-shade wip">
+                            Coming Soon
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="card2 sticky" style="z-index: 3;position: relative">
+        <div class="oo">
+            <h2>Latest poems by<a class="link" href="https://twitter.com/IBMpoembot" target="_blank">@IBMpoembot</a>:</h2>
+            <div class="slides fade">
+                {% for para in poem1 %}
+                    <p> {{ para }} </p>
+                {% endfor %}
+            </div>
+            <div class="slides fade">
+                {% for para in poem2 %}
+                    <p> {{ para }} </p>
+                {% endfor %}
+            </div>
+            <div class="slides fade">
+                {% for para in poem3 %}
+                    <p> {{ para }} </p>
+                {% endfor %}
+            </div>
+            <a class="prev" onclick="nextSlide(-1)">
+                <i class="cp cp-chevron-left"></i>
+            </a>
+            <a class="next" onclick="nextSlide(1)">
+                <i class="cp cp-chevron-right"></i>
+            </a>
+        </div>
+        <br>
+        <div style="text-align: center;margin: 10px;">
+            <span onclick="currentSlide(1)" class="cp cp-circle dot active"></span>
+            <span onclick="currentSlide(2)" class="cp cp-circle dot"></span>
+            <span onclick="currentSlide(3)" class="cp cp-circle dot"></span>
+        </div>
+    </section>
+    <section class="card1 sticky" style="z-index: 4;">
+        <div class="oo about-preview">
+            <div class="img-square">
+                <img src="../static/images/face.jpg" alt="a woman with long dirty blonde hair smiling" class="circle-img">
+            </div>
+            <div class="about-section">
+                <h2 class="about-title"><span style="color: var(--text1);padding-right: 16px;">about </span> me</h2>
+                <p>I'm a Communications and Digital Studies major with a minor in Computer Science.</p>
+                <a class="button link" onclick=location.href='{{ url_for('about') }}';>learn about me</a>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+{% block script %}
+    let slideIndex = 1;
+    showSlide(slideIndex);
+
+    function nextSlide(n) {
+        showSlide(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlide(slideIndex = n);
+    }
+
+    function showSlide(n) {
+        let i;
+        let slides = document.getElementsByClassName("slides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+{% endblock %}

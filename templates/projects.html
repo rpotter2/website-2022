@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="card2 sticky" style="z-index: 1">
+        <div class="oo"><h2 class="" style="text-align: left;">Animal Crossing Recipe Database
+            - Flask &amp; More</h2>
+            <p style="" class="text">An application for users to sort and filter through recipes within the game Animal
+                Crossing: New Horizons to find the most cost-effective item they can currently make or cost-ineffective
+                recipes to avoid, as well as best gifts for villagers. Created for my Database class as a tour through
+                multiple database structures including MariaDB, Redis, and MongoDB. The project also allowed me to flex
+                my CSS muscles by mimicking the UI and aesthetics of the game.</p>
+            <a class="button link" style="margin: 10px;" onclick=location.href="http://34.173.66.121:5556/" >Visit ACNH Database</a>
+            <img style="" src="../static/images/database.png" class="">
+        </div>
+    </section>
+    <section class="card1 sticky" style="z-index: 2">
+        <div class="oo"><h2 class="title" style="text-align: right;">Flask - IBM Poems</h2>
+            <p style="" class="text">In Electronic Literature we learned one of the first American generated poems was
+                Emmet Williams' "IBM Poem" from A Valentine for Noel which uses a process making poems that write
+                themselves with a list of only 26 words. Unfortunately the original code is lost to time and
+                improvements in tech, and doing it by hand is a tedious process. Therefore, I created this app using
+                Flask to make it easier to experiment and play with.</p>
+            <a class="button link" style="margin: 10px;" onclick=location.href="https://ibm-poems.rachelpotter.net">Visit IBM Poems</a>
+            <img src="../static/images/poem.png" style="" class="img">
+        </div>
+    </section>
+    <section class="card2 sticky" style="z-index: 3">
+        <div class="oo"><h2 style="text-align: left;"class="title">Character Silhouette
+            Generator - JavaScript</h2>
+            <p style="text-align: left;" class="text">My final project for Applied Digital Studies was an application
+                using pure JavaScript that randomly generates silhouettes intended for artists to practice designing
+                diverse characters using basic shapes as is often used in animation and easily recognizable mascots.
+                This was my first project that kicked off my interest in programming, and it means a lot to me.</p>
+            <a class="button link" style="margin: 10px;" onclick=location.href="https://silhouette.rachelpotter.net">Visit Character Silhouette Generator</a>
+            <img style="display: block;height: auto;max-width: 80%;" src="../static/images/silhouette-screenshot.PNG"
+                 class="img">
+        </div>
+    </section>
+    <section class="card1 sticky" style="z-index: 4">
+        <div style="" class="oo"><h2 class="title" style="text-align: right;">Rachable Font</h2>
+            <p style="" class="text">When reading back through my digital notes for classes during quarantine I found
+                they felt too impersonal; like someone else wrote them. I supposed it was because I associated the clean
+                styles of print fonts with textbooks, but handwritten fonts also bothered me with how neat and legible
+                they were. So I went on a journey exploring typography and created a font not always readable, but
+                rachable.</p>
+            <a class="button link" style="margin: 10px;" href="Rachable-Readable.otf" download>Download Font</a>
+            <img style="" class="img" src="../static/images/text-example.png">
+        </div>
+    </section>
+{% endblock %}
+{% block script %}
+    let slideIndex = 1;
+    showSlide(slideIndex);
+
+    function nextSlide(n) {
+    showSlide(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+    showSlide(slideIndex = n);
+    }
+
+    function showSlide(n) {
+    let i;
+    let slides = document.getElementsByClassName("slides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {
+    slideIndex = 1
+    }
+    if (n < 1) {
+    slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    }
+{% endblock %}
